@@ -1,0 +1,33 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module bsintegrate__user__routines 
+    interface !bsintegrate_user_interface
+        subroutine derivs(n,x,y,dydx)
+                integer intent(hide) :: n
+                real*8 intent(in) :: x
+                real*8 dimension(n),intent(in,c) :: y
+                real*8 dimension(n),intent(out,c) :: dydx
+        end subroutine derivs
+    end interface !bsintegrate_user_interface
+end python module bsintegrate__user__routines
+python module bsint ! in 
+    interface  ! in :bsint
+        subroutine bsintegrate(derivs,nes,y,t0,t1,tacc,h0,mxstep,yout,tout) ! in :bsint:bsint.f
+            use bsintegrate__user__routines
+            external derivs
+            integer*4, intent(hide),check(len(y)>=nes),depend(y) :: nes=len(y)
+            real*8 dimension(nes) :: y
+            real*8 :: t0
+            real*8 :: t1
+            real*8 :: tacc=1.0e-14
+            real*8 :: h0=0.001
+            integer*4, optional :: mxstep=1000
+            real*8 dimension(mxstep,nes),depend(nes),intent(out) :: yout
+            real*8 dimension(mxstep),depend(mxstep),intent(out) :: tout
+        end subroutine bsintegrate
+    end interface 
+end python module bsint
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
