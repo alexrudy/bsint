@@ -10,11 +10,11 @@
 
 def configuration(parent_package='',top_path=None):
     from numpy.distutils.misc_util import Configuration
-    config = Configuration('glbsint',parent_package,top_path,
+    config = Configuration('bsint',parent_package,top_path,
     author = "Alexander Rudy",
     author_email = "arrudy@ucsc.edu",
     )
-    config.add_extension('bsint',['bsint.f','bsint.pyf'],f2py_options=["skip: bsstep pzextr mmid :"])
+    config.add_extension('_bsint',['bsint.f','bsint.pyf'],f2py_options=["skip: bsstep pzextr mmid :"])
     print "v",config.get_version()
     return config
 

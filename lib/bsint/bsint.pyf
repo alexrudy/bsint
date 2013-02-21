@@ -11,9 +11,9 @@ python module bsintegrate__user__routines
         end subroutine derivs
     end interface !bsintegrate_user_interface
 end python module bsintegrate__user__routines
-python module bsint ! in 
-    interface  ! in :bsint
-        subroutine bsintegrate(derivs,nes,y,t0,t1,tacc,h0,mxstep,yout,tout) ! in :bsint:bsint.f
+python module _bsint ! in 
+    interface  ! in :_bsint
+        subroutine bsintegrate(derivs,nes,y,t0,t1,tacc,h0,mxstep,yout,tout) ! in :_bsint:bsint.f
             use bsintegrate__user__routines
             external derivs
             integer*4, intent(hide),check(len(y)>=nes),depend(y) :: nes=len(y)
@@ -27,7 +27,7 @@ python module bsint ! in
             real*8 dimension(mxstep),depend(mxstep),intent(out) :: tout
         end subroutine bsintegrate
     end interface 
-end python module bsint
+end python module _bsint
 
 ! This file was auto-generated with f2py (version:2).
 ! See http://cens.ioc.ee/projects/f2py2e/
