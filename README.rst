@@ -25,3 +25,42 @@ Use it!
 =======
 
 To use the ``bsintegrate()`` function, you'll need to write a function which calculates the derivatives of your system of equations. The signature of your derivatives function should be ``derivs(t,Ys,*args)`` where ``args`` are any extra arguments you wish to pass through the integrator to the derivatives function. Derivatives should return an array ``dYsdt``, the derivatives of ``Ys``, which should be the same shape as ``Ys``. ``Ys`` and ``dYsdt`` should be Numpy_ arrays.
+
+
+The ``bsintegrate`` function itself:
+
+    yout,tout = bsintegrate(derivs,y,t0,t1,[tacc,h0,mxstep,args])
+
+Parameters
+----------
+``derivs`` : call-back function. Should take the current timestep and position. derivs(t,y)
+``y`` : input array of variables for integration at t0.
+``t0`` : float, starting time for integration
+``t1`` : float, ending point for integration
+
+Other Parameters
+----------------
+``args`` : input tuple, optional
+    Default: ``()``
+``tacc`` : input float, optional
+    Default: ``1e-14``
+``h0`` : input float, optional
+    Default: ``1e-3``
+``mxstep`` : input int, optional
+    Default: ``1e4``
+
+Returns
+-------
+``yout`` : rank-2 array() with bounds (steps,nes)
+``tout`` : rank-1 array() with bounds (steps)
+
+Notes
+-----
+Call-back functions::
+
+  def derivs(x,y): return dydx
+  Required arguments:
+    x : input float
+    y : input rank-1 array('d') with bounds (n)
+  Return objects:
+    dydx : rank-1 array('d') with bounds (n)
