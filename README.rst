@@ -1,5 +1,5 @@
-bsint -- A Bulirsch-Stoer Integrator
-====================================
+bsint - A Bulirsch-Stoer Integrator
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a python adaptor for the fortan-based Bulirsch-Stoer integrator. The integrator is written in fortran, from Numerical Recipies. An example implementation is included in the file `pythagorean_threebody.py`. After installing, run this file from the command-line, and examine `output.dat` and `output.png` to see the results.
 
