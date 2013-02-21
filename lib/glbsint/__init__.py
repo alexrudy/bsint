@@ -8,11 +8,12 @@
 
 __all__ = ['bsintegrate']
 
-from bsint import bsintegrate
-bsintegrate.__doc__ = """
+import bsint.bsintegrate
+import numpy
+bsint.bsintegrate.__doc__ = """
 A Bulirsch-Stoer Integrator. Based on Greg Laughlin's integration in fewbody.f
 
-yout,tout = bsintegrate(derivs,y,t0,t1,[tacc,h0,mxstep,derivs_extra_args])
+yout,tout = bsintegrate(derivs,y,t0,t1,[tacc,h0,mxstep,args])
 
 Wrapper for ``bsintegrate``.
 
@@ -25,19 +26,19 @@ t1 : float, ending point for integration
 
 Other Parameters
 ----------------
-derivs_extra_args : input tuple, optional
+args : input tuple, optional
     Default: ()
 tacc : input float, optional
     Default: 1e-14
 h0 : input float, optional
-    Default: 0.001
+    Default: 1e-3
 mxstep : input int, optional
-    Default: 1000
+    Default: 1e4
 
 Returns
 -------
-yout : rank-2 array('d') with bounds (mxstep,nes)
-tout : rank-1 array('d') with bounds (mxstep)
+yout : rank-2 array('d') with bounds (steps,nes)
+tout : rank-1 array('d') with bounds (steps)
 
 Notes
 -----
@@ -51,3 +52,10 @@ Call-back functions::
     dydx : rank-1 array('d') with bounds (n)
 
 """
+
+def bsintegrate(erivs,y,t0,t1,tacc=1e-14,h0=1e-3,mxstep=1e4,args=(,)):
+    t, y = bsint.bsintegrate(derivs,y,t0,t1,tacc,h0,mxstep,args)
+    lindex = np.argmax(t)+1
+    return t[:lindex], y[:lindex]
+    
+bsintegrate.__doc__ = bsint.bsintegrate.__doc__

@@ -20,9 +20,9 @@ python module bsint ! in
             real*8 dimension(nes) :: y
             real*8 :: t0
             real*8 :: t1
-            real*8 :: tacc=1.0e-14
-            real*8 :: h0=0.001
-            integer*4, optional :: mxstep=1000
+            real*8 :: tacc
+            real*8 :: h0
+            integer*4, optional :: mxstep
             real*8 dimension(mxstep,nes),depend(nes),intent(out) :: yout
             real*8 dimension(mxstep),depend(mxstep),intent(out) :: tout
         end subroutine bsintegrate
