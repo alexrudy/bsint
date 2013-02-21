@@ -8,7 +8,7 @@
 
 __all__ = ['bsintegrate']
 
-import bsint.bsintegrate
+import bsint
 import numpy
 bsint.bsintegrate.__doc__ = """
 A Bulirsch-Stoer Integrator. Based on Greg Laughlin's integration in fewbody.f
@@ -53,9 +53,9 @@ Call-back functions::
 
 """
 
-def bsintegrate(erivs,y,t0,t1,tacc=1e-14,h0=1e-3,mxstep=1e4,args=(,)):
+def bsintegrate(derivs,y,t0,t1,tacc=1e-14,h0=1e-3,mxstep=1e4,args=()):
     t, y = bsint.bsintegrate(derivs,y,t0,t1,tacc,h0,mxstep,args)
-    lindex = np.argmax(t)+1
+    lindex = numpy.argmax(t)+1
     return t[:lindex], y[:lindex]
     
 bsintegrate.__doc__ = bsint.bsintegrate.__doc__
