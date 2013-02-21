@@ -24,7 +24,4 @@ and look at ``output.png``!
 Use it!
 =======
 
-To use the ``bsintegrate()`` function, you'll need to write a function which calculates the derivatives of your system of equations. The signature of your derivatives function should be::
-    derivs(t,Ys,*args)
-
-where ``args`` are any extra arguments you wish to pass through the integrator to the derivatives function. Derivatives should return an array ``dYsdt``, the derivatives of ``Ys``, which should be the same shape as ``Ys``. ``Ys`` and ``dYsdt`` should be Numpy_ arrays.
+To use the ``bsintegrate()`` function, you'll need to write a function which calculates the derivatives of your system of equations. The signature of your derivatives function should be ``derivs(t,Ys,*args)`` where ``args`` are any extra arguments you wish to pass through the integrator to the derivatives function. Derivatives should return an array ``dYsdt``, the derivatives of ``Ys``, which should be the same shape as ``Ys``. ``Ys`` and ``dYsdt`` should be Numpy_ arrays.
