@@ -64,3 +64,5 @@ Call-back functions::
     y : input rank-1 array('d') with bounds (n)
   Return objects:
     dydx : rank-1 array('d') with bounds (n)
+
+.. _Numpy: http://www.numpy.org
