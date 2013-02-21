@@ -20,7 +20,7 @@ def configuration(parent_package='',top_path=None):
                        assume_default_configuration=True,
                        delegate_options_to_subpackages=True,
                        quiet=True)
-    config.add_subpackage('glbsint','lib/glbsint')
+    config.add_subpackage('bsint','lib/bsint')
     # print "v",config.get_version()
     return config
 

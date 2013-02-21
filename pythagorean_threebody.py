@@ -81,9 +81,9 @@ def force(t,Y,mass):
                     dYdt[ib+(2*ic)-1] = dYdt[ib+(2*ic)-1] - mass[j] * (Y[ib+2*ic-2] - Y[jb+2*ic-2])/denom[i,j]
     return dYdt
             
-import glbsint
+import bsint
         
-yout, tout = glbsint.bsintegrate(force,Y0,t0,t1,mxstep=10000,args=(mass,))
+yout, tout = bsint.bsintegrate(force,Y0,t0,t1,mxstep=10000,args=(mass,))
 
 # Plot the results!
 import matplotlib.pyplot as plt
